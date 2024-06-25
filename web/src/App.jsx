@@ -1,7 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
   const [result, setResult] = useState("")
@@ -27,11 +24,13 @@ function App() {
   }
   return (
     <>
-      <div>
-        <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder='Enter URL' />
-        <button onClick={checkMal}>SUBMIT</button>
-        <span>{result}</span>
-      </div>
+      <body>
+        <div>
+          <input type="text" value={url} onChange={(e) => setUrl(e.target.value)} placeholder='Enter URL' className='rounded-lg p-2 border border-black' />
+          <button onClick={checkMal} className='p-2 rounded-2xl bg-slate-600 text-white'>SUBMIT</button>
+          <span>{result}</span>
+        </div>
+      </body>
     </>
   )
 }
