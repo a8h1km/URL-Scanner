@@ -1,16 +1,28 @@
 import express from "express";
 import cors from "cors";
 import fetch from "node-fetch";
+import { promises as fs } from "fs";
 
 const app = express();
 const port = 3001;
 
 app.use(cors());
 app.use(express.json());
+let apii = '';
+
+const loadApiKey = async () => {
+    try {
+        apii = await fs.readFile('api_key.txt', 'utf8');
+    } catch (error) {
+        console.error("Error reading API key file:", error);
+    }
+};
+
+loadApiKey();
 
 app.post('/scan-url', async (req, res) => {
     const url = req.body.url;
-    const api = req.body.api;
+    const api = apii.trim();
     console.log(api);
     console.log(url);
 
