@@ -8,21 +8,20 @@ const port = 3001;
 
 app.use(cors());
 app.use(express.json());
-let apii = '';
-
-const loadApiKey = async () => {
-    try {
-        apii = await fs.readFile('api_key.txt', 'utf8');
-    } catch (error) {
-        console.error("Error reading API key file:", error);
-    }
-};
-
-loadApiKey();
+const key = process.env.API_KEY;
+// let apii = '';
+// const loadApiKey = async () => {
+//     try {
+//         apii = await fs.readFile('api_key.txt', 'utf8');
+//     } catch (error) {
+//         console.error("Error reading API key file:", error);
+//     }
+// };
+// loadApiKey();
 
 app.post('/scan-url', async (req, res) => {
     const url = req.body.url;
-    const api = apii.trim();
+    const api = key.trim();
     console.log(api);
     console.log(url);
 
