@@ -125,7 +125,7 @@ function Inputs() {
             alert("Enter a valid URL");
             return;
         }
-        const res = await fetch("http://localhost:3001/scan-url", {
+        const res = await fetch("https://url-scanner-2.onrender.com/scan-url", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
